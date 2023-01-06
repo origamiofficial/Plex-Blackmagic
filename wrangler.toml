@@ -8,3 +8,6 @@ routes = [
   "CLOUDFLARE_PLEX_URL/video/:/transcode/universal/start*", 
   "CLOUDFLARE_PLEX_URL/video/:/transcode/universal/subtitles*"
 ]
+
+[vars]
+PLEX_DESIRED_BITRATE = "60000"
