@@ -12,19 +12,19 @@ async function handleRequest(event) {
   // Allow modifications of params
   let params = new URLSearchParams(url.searchParams);
 
-  // If we have a video resolution of 720... lets delete it
+  // If we have a video resolution of 1080... lets delete it
   let video_resolution = params.get("videoResolution");
-  if (video_resolution && video_resolution.includes("720"))
+  if (video_resolution && video_resolution.includes("1080"))
     params.delete("videoResolution");
 
   // Grab the video stream bitrates
   let video_bitrate = parseInt(params.get("videoBitrate")) || 0;
   let mvideo_bitrate = parseInt(params.get("maxVideoBitrate")) || 0;
 
-  // If we are transcoding to less than 4mbps, lets update to our desired bitrate
-  if (video_bitrate > 0 && video_bitrate <= 4000)
+  // If we are transcoding to less than 12mbps, lets update to our desired bitrate
+  if (video_bitrate > 0 && video_bitrate <= 12000)
     params.set("videoBitrate", PLEX_DESIRED_BITRATE);
-  if (mvideo_bitrate > 0 && mvideo_bitrate <= 4000)
+  if (mvideo_bitrate > 0 && mvideo_bitrate <= 12000)
     params.set("maxVideoBitrate", PLEX_DESIRED_BITRATE);
 
   // If we actually modified the bitrates to our desired bitrates
